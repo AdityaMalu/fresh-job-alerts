@@ -1,0 +1,42 @@
+{
+  "ntfy_topic": "",
+  "linkedin_window_seconds": 7200,
+  "linkedin_keywords": [
+    "software engineer",
+    "software development engineer",
+    "backend engineer",
+    "java developer",
+    "SDE 1"
+  ],
+  "linkedin_locations": [
+    "Bengaluru, Karnataka, India",
+    "Hyderabad, Telangana, India",
+    "Pune, Maharashtra, India",
+    "India"
+  ],
+  "title_include": "software|\\bsde\\b|\\bswe\\b|back[- ]?end|developer|member of technical staff|\\bmts\\b|programmer|platform engineer|\\bjava\\b|engineer\\s*(i|1)\\b",
+  "title_exclude": "senior|\\bsr\\b|\\bsr\\.|staff|principal|\\blead\\b|manager|director|architect|\\bhead\\b|\\bvp\\b|intern\\b|internship|apprentice|front[- ]?end|android|\\bios\\b|mobile|\\bqa\\b|quality|\\btest|sdet|data scien|devops|\\bsre\\b|site reliability|support|salesforce developer|\\bsap\\b|servicenow developer|\\biii\\b|\\biv\\b|\\b[3-9]\\b|\\bl[5-9]\\b|\\bui\\b|\\bux\\b|designer|embedded|firmware|\\bphp\\b|wordpress|\\.net|c#|mainframe|cobol|consultant|specialist|expert|\\b(5|6|7|8|9|10)\\+? ?(yrs|years)|\\bavp\\b|vice president|\\b[spd]mts\\b|technical leader|intermediate|dot ?net|\\bl[3-9]\\b|asic|hardware|design engineer|configuration management|solutions engineer|boomi|\\bdir\\b|\\bmgr\\b|mgmt|content developer|\\d+\\s*(to|-)\\s*\\d+\\s*(yrs|years)",
+  "title_stretch": "\\bii\\b|\\b2\\b|sde-?2",
+  "location_include": "bengaluru|bangalore|hyderabad|pune|remote[^a-z]*(india|in)\\b|india[^a-z]*remote|^\\s*(india|in)\\s*$",
+  "max_min_years_drop": 3,
+  "stack_weights": {
+    "java": 3,
+    "spring": 3,
+    "backend": 2,
+    "back-end": 2,
+    "microservice": 2,
+    "distributed": 1,
+    "aws": 1,
+    "kubernetes": 1,
+    "golang": 1,
+    "postgres": 1,
+    "kafka": 1,
+    "python": 1,
+    "c++": 1,
+    "sql": 1,
+    "rest api": 1,
+    "cloud": 1
+  },
+  "company_block": [],
+  "notion_data_source": ""
+}

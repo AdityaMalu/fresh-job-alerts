@@ -1,0 +1,12 @@
+# personal settings and secrets - never commit
+config.json
+state/
+*.token
+notion_token.txt
+
+# your own scan output
+jobs_feed.csv
+probe_result.json
+
+__pycache__/
+*.pyc
