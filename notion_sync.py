@@ -14,7 +14,10 @@ from pathlib import Path
 import requests
 
 HERE = Path(__file__).parent
-DATA_SOURCE = json.loads((HERE / "config.json").read_text(encoding="utf-8")).get("notion_data_source", "")
+CONFIG = json.loads((HERE / "config.json").read_text(encoding="utf-8"))
+DATA_SOURCE = CONFIG.get("notion_data_source", "")
+# Tier A jobs at or above this score go in as "Interested" (the shortlist); set to null to turn off
+SHORTLIST_MIN_SCORE = CONFIG.get("shortlist_min_score", 5)
 PENDING = HERE / "state" / "notion_pending.json"
 API = "https://api.notion.com/v1"
 VERSION = "2025-09-03"
@@ -67,6 +70,15 @@ def posted_date(posted, found_at):
     return found.date().isoformat()
 
 
+def shortlisted(job):
+    if SHORTLIST_MIN_SCORE is None or job.get("tier") != "A":
+        return False
+    try:
+        return float(job.get("score")) >= SHORTLIST_MIN_SCORE
+    except (TypeError, ValueError):
+        return False
+
+
 def properties(job):
     title = job["title"].strip()
     stretch = re.search(r"\bii\b|\b2\b|sde-?2", title, re.I)
@@ -81,7 +93,7 @@ def properties(job):
         "Posted Date": {"date": {"start": posted_date(job.get("posted"), job.get("found_at_ist"))}},
         "Link": {"url": job["url"]},
         "Job ID": {"rich_text": [{"text": {"content": str(job.get("id") or job_id_from_url(job["url"]))[:200]}}]},
-        "Status": {"status": {"name": "New"}},
+        "Status": {"status": {"name": "Interested" if shortlisted(job) else "New"}},
         "Source": {"select": {"name": job.get("source", "linkedin")}},
     }
     if job.get("tier") in ("A", "B"):

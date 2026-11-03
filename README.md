@@ -34,6 +34,7 @@ Edit `config.json`:
 | `stack_weights` | Keywords that raise a job's **Score** (how well the stack fits you). |
 | `company_block` | Company names to ignore (e.g. staffing agencies). |
 | `notion_data_source` | Optional, see Notion below. |
+| `shortlist_min_score` | Tier A jobs with at least this Score go into Notion as **Interested** instead of **New**, so the Interested view is your shortlist. Default 5; `null` turns it off. |
 
 Then:
 
@@ -64,7 +65,7 @@ It only runs while the computer is on. Missed runs catch up when it wakes (Windo
 
 After each run, new matches can be added to a Notion database.
 
-1. Create a database with these properties: **Title** (title), **Company** (select), **Location** (text), **Level** (select), **Experience** (text), **Posted Date** (date), **Link** (URL), **Job ID** (text), **Status** (status, with a `New` option), **Tier** (select), **Source** (select), **Score** (number).
+1. Create a database with these properties: **Title** (title), **Company** (select), **Location** (text), **Level** (select), **Experience** (text), **Posted Date** (date), **Link** (URL), **Job ID** (text), **Status** (status, with `New` and `Interested` options), **Tier** (select), **Source** (select), **Score** (number).
 2. At https://www.notion.so/profile/integrations, create an **internal** connection and give it access to that database (Content access → Edit access).
 3. Copy the connection's secret into `state/notion_token.txt` (or set the `NOTION_TOKEN` environment variable).
 4. Open the database → `•••` → **Copy link**. Put the 32-character ID from that link (the part before `?v=`) in `notion_data_source` in `config.json`. A data source ID works too.

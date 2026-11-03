@@ -38,5 +38,6 @@
     "cloud": 1
   },
   "company_block": [],
-  "notion_data_source": ""
+  "notion_data_source": "",
+  "shortlist_min_score": 5
 }
